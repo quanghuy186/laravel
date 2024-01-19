@@ -2,9 +2,9 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Chào mừng admin</title>
+    <title>Đăng nhập lỗi</title>
 </head>
 <body>
-<p>Chào mừng admin đến với website.</p>
+<p>Sai tên đăng nhập hoặc mật khẩu.</p>
 </body>
 </html>
