@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 
 
 Route::get('/', function () {
@@ -50,12 +50,34 @@ Route::get('dictionary', function(){
 });
 
 Route::post('dictionary', function (Request $request) {
-    $lists = ['hello' => 'xin chào', 'good bye' => 'tạm biệt'];
+    $lists = ['hello' => 'xin chào', 'good bye' => 'tạm biệt', 'hihi' => 'biến'];
     $rs = $request->word;
 
     foreach ($lists as $key => $value) {
         if ($rs == $key) {
             return view('dictionary', compact('value'));
         }
+    }
+});
+
+Route::group(['prefix' => 'user'], function(){
+	Route::get('/profile', function(){
+		return redirect('/user/login');
+	});
+
+	Route::get('/login', function(){
+		return 'login web here';
+	});
+});
+
+Route::get('/time', function(){
+        return view('index');   
+});
+
+Route::get('/timezone', function(Request $request){
+    if(isset($request->location)){
+        $location = $request->location;
+        $todayDate = Carbon::now($location)->format('Y-m-d h:i:s');
+        echo 'Múi giờ bạn chọn ' . $location . ' hiện tại đang là: ' . $todayDate;
     }
 });
