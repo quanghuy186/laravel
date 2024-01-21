@@ -81,3 +81,7 @@ Route::get('/timezone', function(Request $request){
         echo 'Múi giờ bạn chọn ' . $location . ' hiện tại đang là: ' . $todayDate;
     }
 });
+
+Route::get('task', function(){
+    return view('task');
+});
