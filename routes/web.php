@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\TaskController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -82,8 +83,10 @@ Route::get('/timezone', function(Request $request){
     }
 });
 
-Route::get('task', function(){
-    return view('task');
-});
 
-Route::get('/email', [EmailController::class, 'index']);
+Route::prefix('/taskManager')->group(function () {
+    
+    Route::get('/index', [TaskController::class, 'index']);
+
+    Route::get('/create', [TaskController::class, 'create']);
+});
