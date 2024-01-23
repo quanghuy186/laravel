@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-
+use App\Http\Controllers\EmailController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -85,3 +85,5 @@ Route::get('/timezone', function(Request $request){
 Route::get('task', function(){
     return view('task');
 });
+
+Route::get('/email', [EmailController::class, 'index']);
