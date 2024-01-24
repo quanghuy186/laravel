@@ -90,3 +90,7 @@ Route::prefix('/taskManager')->group(function () {
 
     Route::get('/create', [TaskController::class, 'create']);
 });
+
+Route::get('/blade', function () {
+    return view('childen');
+});
