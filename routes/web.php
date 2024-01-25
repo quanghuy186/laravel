@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\CustomerController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -93,4 +94,9 @@ Route::prefix('/taskManager')->group(function () {
 
 Route::get('/blade', function () {
     return view('childen');
+});
+
+Route::prefix('/customer')->group(function () { 
+    Route::get('/', [CustomerController::class, 'index'])->name('customers.index');
+    Route::get('/create', [CustomerController::class, 'create'])->name('customers.create');
 });
