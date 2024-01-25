@@ -86,10 +86,12 @@ Route::get('/timezone', function(Request $request){
 
 
 Route::prefix('/taskManager')->group(function () {
-    Route::get('/index', [TaskController::class, 'index']);
-
-    Route::get('/create', [TaskController::class, 'create']);
+    Route::get('/index', [TaskController::class, 'index'])->name('taskManager.index');
+    Route::get('/create', [TaskController::class, 'create'])->name('taskManager.create');
 });
+
+Route::post('/store', [TaskController::class, 'store'])->name('taskManager.store');
+
 
 Route::get('/blade', function () {
     return view('childen');

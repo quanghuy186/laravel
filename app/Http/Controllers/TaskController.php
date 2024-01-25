@@ -37,11 +37,11 @@ class TaskController extends Controller
         return view('taskManager.create');
     }
 
-    function store(){
-        return view('taskManager.store');
+    function store(Request $request){
+        if($request->file('file')) {
+            $path = $request->file('file')->store('uploads');
+        }
+        return "create task successfully";
     }
-
-
-    
 
 }

@@ -16,7 +16,7 @@
     <div class="card">
         <h5 class="card-header">Danh sách công việc</h5>
         <div class="card-body">
-            <a href="" class="btn btn-success mb-2">+ New</a>
+            <a href="{{ route('taskManager.create') }}" class="btn btn-success mb-2">+ New</a>
             <table class="table table-striped table-bordered">
                 <thead>
                 <tr>
