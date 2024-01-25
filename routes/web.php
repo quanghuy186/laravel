@@ -86,7 +86,6 @@ Route::get('/timezone', function(Request $request){
 
 
 Route::prefix('/taskManager')->group(function () {
-    
     Route::get('/index', [TaskController::class, 'index']);
 
     Route::get('/create', [TaskController::class, 'create']);

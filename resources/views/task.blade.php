@@ -28,27 +28,26 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Làm bài tập tuần</td>
-                    <td>25/07/2023</td>
-                    <td>26/07/2023</td>
-                    <td><span class="badge bg-success">Done</span></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Nộp báo cáo</td>
-                    <td>25/07/2023</td>
-                    <td>26/07/2023</td>
-                    <td><span class="badge bg-success">Done</span></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Quay video bài giảng</td>
-                    <td>25/07/2023</td>
-                    <td>26/07/2023</td>
-                    <td><span class="badge bg-warning text-dark">Warning</span></td>
-                </tr>
+                    @foreach ($tasks as $row)
+                        <tr>
+                            <th scope="row">{{$row['id']}}</th>
+                            <td>{{ $row['title'] }}</td>
+                            <td>{{ $row['start_date'] }}</td>
+                            <td> {{ $row['end_date'] }} </td>
+                            <td>
+                                @if($row['status'] == '1')
+                                    <span class="badge bg-success">
+                                        Done
+                                    </span>
+                                @else
+                                    <span class="badge bg-warning">
+                                        Warning
+                                    </span>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                
                 </tbody>
             </table>
         </div>
