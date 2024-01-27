@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\CustomerController;
+use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
     return view('welcome');
@@ -92,7 +93,6 @@ Route::prefix('/taskManager')->group(function () {
 
 Route::post('/store', [TaskController::class, 'store'])->name('taskManager.store');
 
-
 Route::get('/blade', function () {
     return view('childen');
 });
@@ -100,4 +100,26 @@ Route::get('/blade', function () {
 Route::prefix('/customer')->group(function () { 
     Route::get('/', [CustomerController::class, 'index'])->name('customers.index');
     Route::get('/create', [CustomerController::class, 'create'])->name('customers.create');
+});
+
+Route::get('/insert', function () {
+    DB::table('posts')->insertGetId([
+        'title' => 'vo',
+        'body' => 'hello',
+    ]);
+});
+
+Route::get('/select', function () {
+    $users = DB::table('posts')->select()->where('id', '=', '1')->get();
+    dd($users);
+});
+
+Route::get('/update', function () {
+    $update = DB::table('posts')->where('id', '=', 1)->update(['title' => 'new Book']);
+    dd($update);
+});
+
+Route::get('/delete', function () {
+    $delete = DB::table('posts')->where('id', '=', 1)->delete();
+    dd($delete);
 });
