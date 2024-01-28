@@ -100,7 +100,13 @@ Route::get('/blade', function () {
 Route::prefix('/customer')->group(function () { 
     Route::get('/', [CustomerController::class, 'index'])->name('customers.index');
     Route::get('/create', [CustomerController::class, 'create'])->name('customers.create');
+    Route::post('/create', [CustomerController::class, 'store'])->name('customers.store');
 });
+
+Route::get('/{id}/delete', [CustomerController::class, 'delete'])->name('customers.delete');
+
+Route::get('/{id}/edit', [\App\Http\Controllers\CustomerController::class, 'edit'])->name('customers.edit');
+Route::put('/{id}/edit', [\App\Http\Controllers\CustomerController::class, 'update'])->name('customers.update');
 
 Route::get('/insert', function () {
     DB::table('posts')->insertGetId([
