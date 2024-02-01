@@ -4,22 +4,35 @@
         <div class="card">
             <h5 class="card-header">Thêm mới khách hàng</h5>
             <div class="card-body">
-                <form method="post">
-                    @method('POST')
-                     @csrf
+                <form method="post" action="{{ route('customers.store') }}">
+                    @csrf
                     <div class="mb-3">
                         <label for="" class="form-label">Tên khách hàng</label>
-                        <input type="text" class="form-control" id="" name="name">
+                        <input type="text" name="name" class="form-control" id="">
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Ngày sinh</label>
-                        <input type="date" class="form-control" id="" name="dob">
+                        <input type="date" name="dob" class="form-control" id="">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" aria-describedby="emailHelp" name="email">
+                        <input type="email" name="email" class="form-control" aria-describedby="emailHelp">
                     </div>
-                    <button type="submit" class="btn btn-primary">Lưu</button>
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <label for="" class="col-form-label">Tỉnh thành</label>
+                        </div>
+                        <div class="col">
+                            <select class="form-control" name="city_id">
+                                @foreach($cities as $city)
+                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                    </div>
                 </form>
             </div>
         </div>

@@ -11,22 +11,24 @@
                         <th scope="col">Tên khách hàng</th>
                         <th scope="col">Ngày sinh</th>
                         <th scope="col">Email</th>
-                        <th></th>
+                        <th scope="col">Thành phố</th>
+                        <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($customers as $index => $customer)
-                        <tr>
-                            <th scope="row">{{ $index + 1 }}</th>
-                            <td>{{ $customer->name }}</td>
-                            <td>{{ $customer->dob }}</td>
-                            <td>{{ $customer->email }}</td>
-                            <td>
-                                <a onclick="return confirm('Are you sure?')" href="{{ route('customers.delete', $customer->id) }}" class="btn btn-danger">Delete</a>
-                                <a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-primary">Update</a>
-                            </td>
-                        </tr>
-                    @endforeach
+                        @foreach($customers as $index => $customer)
+                            <tr>
+                                <th scope="row">{{ $index + 1 }}</th>
+                                <td>{{ $customer->name }}</td>
+                                <td>{{ $customer->dob }}</td>
+                                <td>{{ $customer->email }}</td>
+                                <td>{{ $customer->city ? $customer->city->name : 'Không có dữ liệu' }}</td>
+                                <td>
+                                    <a onclick="return confirm('Are you sure?')" href="{{ route('customers.delete', $customer->id) }}" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-primary">Update</a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

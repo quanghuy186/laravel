@@ -129,3 +129,5 @@ Route::get('/delete', function () {
     $delete = DB::table('posts')->where('id', '=', 1)->delete();
     dd($delete);
 });
+
+Route::post('/search', [CustomerController::class, 'search'])->name('customer.search');
