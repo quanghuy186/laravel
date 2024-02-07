@@ -130,4 +130,4 @@ Route::get('/delete', function () {
     dd($delete);
 });
 
-Route::post('/search', [CustomerController::class, 'search'])->name('customer.search');
+Route::get('/search', [CustomerController::class,'search'])->name('customers.search');

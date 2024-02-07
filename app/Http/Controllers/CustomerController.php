@@ -15,13 +15,23 @@ class CustomerController extends Controller
     // }
 
     function index() {
-        $customers = Customer::with('city')->get();
+        $customers = Customer::with('city')->paginate(5);
         return view('customers.list', compact('customers'));
     }
 
     function create() {
         $cities = City::all();
         return view('customers.create', compact('cities'));
+    }
+
+    public function search(Request $request){
+        $keyword = $request->keyword;
+        if (!$keyword) {
+            return redirect()->route('customers.index');
+        }
+        $customers = Customer::where('name', 'LIKE', '%' . $keyword . '%')->with('city')->paginate(3);
+        $cities = City::all();
+        return view('customers.list', compact('customers', 'cities'));
     }
        
     // function create() {
@@ -82,10 +92,5 @@ class CustomerController extends Controller
         $customer->city_id = $request->city_id;
         $customer->save();
         return redirect()->route('customers.index');
-    }
-
-    function search(Request $request) {
-        $customers = DB::table('customers')->where('id', '=', $request->id)->get();
-        return view('customers.search', compact('customers'));
     }
 }
