@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
@@ -131,3 +132,6 @@ Route::get('/delete', function () {
 });
 
 Route::get('/search', [CustomerController::class,'search'])->name('customers.search');
+
+Route::get('/post', [PostController::class, 'create']);
+Route::post('/post', [PostController::class, 'store']);
