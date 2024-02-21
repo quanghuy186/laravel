@@ -9,14 +9,25 @@
                     <div class="mb-3">
                         <label for="" class="form-label">Tên khách hàng</label>
                         <input type="text" name="name" class="form-control" id="">
+                        @error('name')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
+                    
                     <div class="mb-3">
                         <label for="" class="form-label">Ngày sinh</label>
                         <input type="date" name="dob" class="form-control" id="">
+                        @error('dob')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
+                    
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
                         <input type="email" name="email" class="form-control" aria-describedby="emailHelp">
+                        @error('email')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="row align-items-center">
                         <div class="col-auto">
@@ -28,6 +39,9 @@
                                     <option value="{{ $city->id }}">{{ $city->name }}</option>
                                 @endforeach
                             </select>
+                            @error('city_id')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="mt-3">

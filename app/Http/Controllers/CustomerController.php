@@ -5,6 +5,7 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\City;
+use App\Http\Requests\CustomerRequest;
 
 class CustomerController extends Controller
 {
@@ -47,7 +48,7 @@ class CustomerController extends Controller
     //     return redirect()->route('customers.index');
     // }
 
-    function store(Request $request) {
+    function store(CustomerRequest $request) {
         $customer = new Customer();
         $customer->name = $request->name;
         $customer->dob = $request->dob;
