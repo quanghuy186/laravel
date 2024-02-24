@@ -8,6 +8,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\CookieControllor;
 
 Route::get('/', function () {
     return view('welcome');
@@ -135,3 +136,6 @@ Route::get('/search', [CustomerController::class,'search'])->name('customers.sea
 
 Route::get('/post', [PostController::class, 'create']);
 Route::post('/post', [PostController::class, 'store']);
+
+Route::get('/cookie/set',[CookieControllor::class, 'setCookie']);
+Route::get('/cookie/get',[CookieControllor::class, 'getCookie']);
